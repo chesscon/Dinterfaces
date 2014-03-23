@@ -1,0 +1,22 @@
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+
+
+-- -----------------------------------------------------
+-- Table `DInterfaces`.`Usuarios`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `DInterfaces`.`Usuarios` (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `nickname` VARCHAR(50) NOT NULL ,
+  `email` VARCHAR(50) NOT NULL ,
+  `delegacion` VARCHAR(50) NOT NULL ,
+  `codigoPostal` INT NOT NULL ,
+  PRIMARY KEY (`id`) )
+ENGINE = InnoDB;
+
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
