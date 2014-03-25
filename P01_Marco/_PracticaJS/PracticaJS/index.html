@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dise&ntilde;o de Interfaces | VALIDACI&Oacute;N DE FORMULARIOS</title>
+    <link rel="stylesheet" href="css/foundation.css" />
+    <link rel="stylesheet" href="css/screen.css"/>
+    <script src="js/vendor/modernizr.js"></script>
+</head>
+<body>
+
+<div class="row">
+    <div class="large-12 columns">
+        <h1>Pr&aacute;ctica 1: Validaci&oacute;n de formularios</h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="large-12 columns">
+        <div class="panel">
+            <h3>por Oscar Hern&aacute;ndez Constantino</h3>
+            <p>
+                Existen actualmente much&iacute;simas herramientas que permiten trabajar sobre la capa de vista en un
+                desarrollo. Adem&aacute;s, HTML5 incorpora nuevos atributos para los campos de formularios como la
+                validaci&oacute;n de campo requerido (atributo "required").
+            </p>
+            <p>
+                A continuaci&oacute;n, tres ejemplos de la manera en que podemos realizar las validaciones en
+                los campos de nuestros formularios.
+            </p>
+
+            <div class="row">
+                <div class="large-4 medium-4 columns">
+                    <p>
+                        <a href="#api-javascript">Validaci&oacute;n Simple</a><br />
+                        Utilizando &uacute;nicamente la API de Javascript para acceder a los elementos del formulario y
+                        funciones sencillas para hacer las validaciones.
+                    </p>
+                </div>
+
+                <div class="large-4 medium-4 columns">
+                    <p>
+                        <a href="#jquery">Validaci&oacute;n con jQuery</a><br />
+                        Este ejemplo es una mejora de la validaci&oacute;n simple que ejemplifica la gran utilidad y
+                        versatilidad de jQuery.
+                    </p>
+                </div>
+
+                <div class="large-4 medium-4 columns">
+                    <p>
+                        <a href="#jquery-validator">Validaci&oacute;n con Plugins</a><br />
+                        Debido a la enorme flexibilidad en el manejo del DOM que ofrece jQuery, tenemos muchos plugins
+                        que podemos utilizar para realizar una validaci&oacute;n visualmente m&aacute;s detallada.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div data-alert data-options="animation_speed: 500;" id="notificacion"></div>
+
+<div class="row">
+    <div class="large-4 medium-4 columns">
+        <div>
+            <h5>Validaci&oacute;n simple</h5>
+            <hr>
+            <form onsubmit="return validaAPIJS()">
+                <label for="vAPI-nickname">nickname</label>
+                <input id="vAPI-nickname" type="text" />
+
+                <label for="vAPI-email">email</label>
+                <input id="vAPI-email" type="email" />
+
+                <label for="vAPI-delegacion">Delegaci&oacute;n</label>
+                <select id="vAPI-delegacion"></select>
+
+                <label for="vAPI-cp">C&oacute;digo Postal</label>
+                <input id="vAPI-cp" type="text" />
+
+                <input type="submit"  value="Aceptar" />
+            </form>
+        </div>
+    </div>
+
+    <div class="large-4 medium-4 columns">
+        <div class="panel">
+            <h5>Validaci&oacute;n con jQuery</h5>
+            <hr>
+            <form>
+                <label for="vJQUERY-nickname">nickname</label>
+                <input id="vJQUERY-nickname" type="text" required="" />
+
+                <label for="vJQUERY-email">email</label>
+                <input id="vJQUERY-email" type="email" required="" />
+
+                <label for="vJQUERY-delegacion">Delegaci&oacute;n</label>
+                <select id="vJQUERY-delegacion" required=""></select>
+
+                <label for="vJQUERY-cp">C&oacute;digo Postal</label>
+                <input id="vJQUERY-cp" type="text" required="" />
+
+                <input id="vJQUERY-submit" type="submit" value="Aceptar">
+            </form>
+        </div>
+    </div>
+
+    <div class="large-4 medium-4 columns">
+        <div class="callout panel">
+            <h5>Validaci&oacute;n con jQuery Validation Plugin</h5>
+            <hr>
+            <form id="vPLUGIN-form" class="cmxform" >
+                <label for="vPLUGIN-nickname">nickname <small>Requerido</small></label>
+                <input id="vPLUGIN-nickname" name="nickname" type="text" placeholder="Debe tener al menos 3 caracteres"
+                       minlength="3" size="12" required />
+                <!--<small class="error">Debes elegir un nickname y debe tener al menos 3 caracteres.</small>-->
+
+                <label for="vPLUGIN-email">email <small>Requerido</small></label>
+                <input id="vPLUGIN-email" name="email" type="email" placeholder="Introduce un email válido"
+                       minlength="3" size="12" required />
+                <!--<small class="error">Debes proporcionarnos un email v&aacute;lido.</small>-->
+
+                <label for="vPLUGIN-delegacion">Delegaci&oacute;n <small>Requerida</small></label>
+                <select id="vPLUGIN-delegacion" name="delegacion" required></select><br>&nbsp;
+                <!--<small class="error">No has seleccionado la Delegaci&oacute;n donde vives.</small>-->
+
+                <label for="vPLUGIN-cp">C&oacute;digo Postal <small>Requerido</small></label>
+                <input id="vPLUGIN-cp" name="cp" type="text" size="5" maxlength="5" required pattern="[0-9]"
+                       placeholder="Requerido (introduce los 5 dígitos de tu Código Postal)" minlength="5" />
+                <!--<small class="error">El c&oacute;digo postal que ingresaste no es v&aacute;lido.</small>-->
+
+                <input class="button" type="submit" value="Aceptar">
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="large-12 medium-12 panel text-center">
+        <p>
+            UNAM - FCiencias
+            | Dise&ntilde;o de Interfaces 2014-2
+            | <strong>Oscar Hern&aacute;ndez Constantino</strong>
+        </p>
+    </div>
+</div>
+
+
+<script src="js/vendor/jquery.js"></script>
+<script src="js/foundation.min.js"></script>
+<script src="js/jquery.validate.js"></script>
+<script>
+    $(document).foundation();
+
+    var ERROR_NICKNAME = "El nickname debe tener al menos 3 caracteres";
+    var ERROR_EMAIL = "El email debe tener al menos 3 caracteres";
+    var ERROR_DELEGACION = "Seleccione la Delegaci&oacute;n";
+    var ERROR_CP = "El C&oacute;digo Postal no es v&aacute;lido";
+    var MSJ_EXITOSO =
+       "El registro se ha completado exitosamente! =)<br>&nbsp;<br>" +
+       "<a href='' class='button tiny radius'>Ok!</a>";
+
+    // VALIDACIÓN DE FORMULARIO USANDO LA API DE JAVASCRIPT
+    function validaAPIJS(){
+        var message = document.getElementById("notificacion");
+        var nickname = document.getElementById("vAPI-nickname");
+        var email = document.getElementById("vAPI-email");
+        var delegacion = document.getElementById("vAPI-delegacion");
+        var cp = document.getElementById("vAPI-cp");
+
+        // Validando nickname (longitud > 2)
+        if((nickname.value).length < 3){
+            message.setAttribute("class","panel alert-box warning radius text-center");
+            message.innerHTML = ERROR_NICKNAME;
+            return false;
+        }
+
+        // Validando email (longitud > 2)
+        else if((email.value).length < 3){
+            message.setAttribute("class","panel alert-box warning radius text-center");
+            message.innerHTML = ERROR_EMAIL;
+            return false;
+        }
+
+        // Validando delegación (obligatoria)
+        else if(delegacion.value == 0){
+            message.setAttribute("class","panel alert-box warning radius text-center");
+            message.innerHTML = ERROR_DELEGACION;
+            return false;
+        }
+
+        // Validando Código Postal (longitud = 5)
+        else if((cp.value).length != 5){
+            message.setAttribute("class","panel alert-box warning radius text-center");
+            message.innerHTML = ERROR_CP;
+            return false;
+        }
+
+        else{
+            message.setAttribute("class","panel alert-box success radius text-center");
+            message.innerHTML = MSJ_EXITOSO;
+            return false; // Este caso debería retornar "true" si queremos que el formulario se envíe.
+        }
+    }
+
+
+    $(document).ready(function(){
+        // Llenando los combos de DELEGACIÓN
+        var delegaciones = new Array();
+            delegaciones[0] = "Álvaro Obregón";
+            delegaciones[1] = "Ázcapotzalco";
+            delegaciones[2] = "Benito Juárez";
+            delegaciones[3] = "Cuajimalpa de Morelos";
+            delegaciones[4] = "Coyoacán";
+            delegaciones[5] = "Cuauhtémoc";
+            delegaciones[6] = "Gustavo A. Madero";
+            delegaciones[7] = "Iztacalco";
+            delegaciones[8] = "Iztapalapa";
+            delegaciones[9] = "Magdalena Contreras";
+            delegaciones[10] = "Miguel Hidalgo";
+            delegaciones[11] = "Milpa Alta";
+            delegaciones[12] = "Tláhuac";
+            delegaciones[13] = "Tlalpan";
+            delegaciones[14] = "Venustiano Carranza";
+            delegaciones[15] = "Xochimilco";
+        var combosDel = $("select[id*='delegacion']");
+        var options = "<option value='0'>Seleccione delegación:</option>";
+
+        for(i=0; i<delegaciones.length; i++){
+            options += "<option>"+ delegaciones[i] +"</option>";
+        }
+        combosDel.each(function(){
+            $(this).html(options);
+        });
+
+        // VALIDACIÓN DE FORMULARIO USANDO jQuery
+        $("#vJQUERY-submit").click(function(evnt){
+            evnt.preventDefault();
+
+            // Validando nickname (longitud > 2)
+            if(($("#vJQUERY-nickname").val()).length < 3)
+                $("#notificacion").html(ERROR_NICKNAME).attr("class","panel alert-box warning radius text-center");
+
+            // Validando email (longitud > 2)
+            else if(($("#vJQUERY-email").val()).length < 3)
+                $("#notificacion").html(ERROR_EMAIL).attr("class","panel alert-box warning radius text-center");
+
+            // Validando delegación (obligatoria)
+            else if($("#vJQUERY-delegacion").val() == 0)
+                $("#notificacion").html(ERROR_DELEGACION).attr("class","panel alert-box warning radius text-center");
+
+            // Validando cp (longitud = 5)
+            else if(($("#vJQUERY-cp").val()).length != 5)
+                $("#notificacion").html(ERROR_CP).attr("class","panel alert-box warning radius text-center");
+
+            else
+                $("#notificacion").html(MSJ_EXITOSO).attr("class","panel alert-box success radius text-center");
+
+        });
+    });
+
+    // VALIDACIÓN DE FORMULARIO CON jQuery Validator Plugin
+    $(function(){
+        $.validator.addMethod("valueNotEquals", function(value, element, arg){
+            return arg != value;
+        }, "Debes seleccionar la delegación");
+
+        $('#vPLUGIN-form').validate({
+            rules: {
+                nickname: {
+                    required: true,
+                    minlength: 3
+                },
+                email: {
+                    required: true,
+                    email: true
+                },
+                delegacion: {
+                    required: true,
+                    valueNotEquals: "0"
+                },
+                cp: {
+                    required: true,
+                    minlength: 5,
+                    number: true
+                }
+
+            },
+            messages: {
+                nickname: {
+                    required: "Por favor ingresa tu nickname",
+                    minlength: "Tu nickname debe tener al menos 3 caracteres"
+                },
+                email: {
+                    required: "Por favor ingresa tu email",
+                    minlength: "Tu email no es válido"
+                },
+                delegacion: {
+                    required: "Por favor indícanos la delegación donde vives",
+                    valueNotEquals: "Debes seleccionar la Delegación"
+                },
+                cp: {
+                    required: "El Código Postal es obligatorio",
+                    minlength: "Por favor proporciona los 5 dígitos de tu Código Postal",
+                    number: "Código Postal no válido"
+                }
+            },
+            submitHandler: function(form) {
+                $("#notificacion").html(MSJ_EXITOSO).attr("class","panel alert-box success radius text-center");
+            }
+        });
+    });
+</script>
+</body>
+</html>
