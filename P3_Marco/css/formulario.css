@@ -1,6 +1,7 @@
 .formulario {
+	width: 40% !important;
 	display: block;
-	margin: 30px;
+	margin: 0 auto;
 }
 
 .formulario label {
@@ -10,9 +11,9 @@
 }
 
 .formulario button {
-	font-size: 1.2em;
-	padding: 1em;
-	margin-left: 50px;
+	font-size: 1.1em;
+	padding: 0.5em;
+	margin-left: 15%;
 }
 
 h1 {

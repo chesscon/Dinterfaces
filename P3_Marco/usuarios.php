@@ -1,16 +1,4 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-  <link rel="stylesheet" type="text/css" href="css/estilos.css" />
-  <title>Práctica PHP</title>
-</head>
-<body>
-  <header>
-    <h1>Información de los Usuarios Registrados</h1>
-  </header>
-
-  <div id="container">
+<h3>Información de los Usuarios Registrados</h3>
     <table>
       <tr>
         <td class="encabezado_tabla">Id</td>
@@ -48,11 +36,4 @@
       ?>
 
     </table>
-  </div>
-
-  <footer>
-    <p>Desarrollado por: Hernández Constantino Oscar</p>
-    <p>Marzo 2014</p>
-  </footer>
-</body>
-</html>
+  

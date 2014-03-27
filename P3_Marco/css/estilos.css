@@ -66,6 +66,15 @@ td {
 	text-align: left;
 }
 
+#contenido {
+	margin: 0 auto;
+	width: 60%;
+}
+
+#contenido h3 {
+	text-align: center;
+}
+
 .encabezado_tabla {
 	background-color: rgba(81,81,81,0.4);	
 	border-radius: 0.2em;
