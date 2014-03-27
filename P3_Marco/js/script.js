@@ -1,35 +1,3 @@
-$(document).ready(function() {
-  // Llenando los combos de DELEGACIÓN
-  var delegaciones = new Array();
-  
-  delegaciones[0] = "Álvaro Obregón";
-  delegaciones[1] = "Ázcapotzalco";
-  delegaciones[2] = "Benito Juárez";
-  delegaciones[3] = "Cuajimalpa de Morelos";
-  delegaciones[4] = "Coyoacán";
-  delegaciones[5] = "Cuauhtémoc";
-  delegaciones[6] = "Gustavo A. Madero";
-  delegaciones[7] = "Iztacalco";
-  delegaciones[8] = "Iztapalapa";
-  delegaciones[9] = "Magdalena Contreras";
-  delegaciones[10] = "Miguel Hidalgo";
-  delegaciones[11] = "Milpa Alta";
-  delegaciones[12] = "Tláhuac";
-  delegaciones[13] = "Tlalpan";
-  delegaciones[14] = "Venustiano Carranza";
-  delegaciones[15] = "Xochimilco";
-  
-  var combosDel = $("select[id*='delegacion']");
-  var options = "<option value='0'>Seleccione delegación:</option>";
-
-  for(i=0; i<delegaciones.length; i++){
-    options += "<option>"+ delegaciones[i] +"</option>";
-  }
-  
-  combosDel.each(function(){
-    $(this).html(options);
-  });
-});
 
 var ERROR_NICKNAME = "El nickname debe tener al menos 3 carácteres";
 var ERROR_EMAIL = "El email debe tener al menos 3 carácteres";
@@ -112,3 +80,61 @@ function enviarDatosAjax () {
   return false;
 
 }
+
+function cargaContenido(fileReq, fun) {
+
+    var st = document.getElementById("contenido");
+
+    var ajax = new XMLHttpRequest();
+
+    ajax.open("GET", fileReq, true);
+
+    ajax.onreadystatechange = function() {
+      if(ajax.status == 200 && ajax.readyState == 4){
+        st.innerHTML = ajax.responseText;
+        fun();
+      }
+    }
+
+    ajax.send();
+
+  return false;
+
+}
+
+function cargaFormulario() {
+
+    // Llenando los combos de DELEGACIÓN
+  var delegaciones = new Array();
+  
+  delegaciones[0] = "Álvaro Obregón";
+  delegaciones[1] = "Ázcapotzalco";
+  delegaciones[2] = "Benito Juárez";
+  delegaciones[3] = "Cuajimalpa de Morelos";
+  delegaciones[4] = "Coyoacán";
+  delegaciones[5] = "Cuauhtémoc";
+  delegaciones[6] = "Gustavo A. Madero";
+  delegaciones[7] = "Iztacalco";
+  delegaciones[8] = "Iztapalapa";
+  delegaciones[9] = "Magdalena Contreras";
+  delegaciones[10] = "Miguel Hidalgo";
+  delegaciones[11] = "Milpa Alta";
+  delegaciones[12] = "Tláhuac";
+  delegaciones[13] = "Tlalpan";
+  delegaciones[14] = "Venustiano Carranza";
+  delegaciones[15] = "Xochimilco";
+  
+  var combosDel = $("select[id*='delegacion']");
+  //var combosDel = $("#delegacion");
+  var options = "<option value='0'>Seleccione delegación:</option>";
+
+  for(i=0; i<delegaciones.length; i++) {
+    options += "<option>"+ delegaciones[i] +"</option>";
+  }
+  
+  combosDel.each(function() {
+    $(this).html(options);
+  });
+
+}
+

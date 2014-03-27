@@ -3,14 +3,14 @@
         Por favor rellene los siguientes campos para registrarse en la base de datos
     </p>
     <hr>
-    <form onsubmit="return validaAPIJS()">
-        <label for="vAPI-nickname">nickname</label>
-        <input id="vAPI-nickname" type="text" />
-        <label for="vAPI-email">email</label>
-        <input id="vAPI-email" type="email" />
-        <label for="vAPI-delegacion">Delegación</label>
-        <select id="vAPI-delegacion"></select>
-        <label for="vAPI-cp">Código Postal</label>
-        <input id="vAPI-cp" type="text" />
-        <input type="submit"  value="Aceptar" />
-    </form>
+    <div class="formulario">
+        <label for="nickname">nickname</label>
+        <input id="nickname" type="text" />
+        <label for="email">email</label> 
+        <input id="email" type="email" />
+        <label for="delegacion">Delegación</label>
+        <select id="delegacion"></select>
+        <label for="cp">Código Postal</label>
+        <input id="cp" type="text" />
+        <button onClick="enviarDatosAjax()"> Aceptar</button>
+    </div>
